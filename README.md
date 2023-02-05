@@ -1,7 +1,25 @@
 # lern-laravel
 lern-laravel
 
+
+Don't forgot add path env for php check by "php -v"
+
+
+## install composer 
+
+````
+https://getcomposer.org/Composer-Setup.exe
+````
+
+## check version
+
+````
+C:\Users\admin>composer -V
+Composer version 2.5.2 2023-02-04 14:33:22
+````
+
 ## download code by composer
+
 ````
 composer create-project --prefer-dist laravel/laravel example-app
 ````
