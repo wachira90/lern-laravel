@@ -1,6 +1,6 @@
 # laravel 9 crud tutorial
 
-
+## create project command
 
 ````
 composer create-project --prefer-dist laravel/laravel=9.5.2 pcd_test
@@ -39,7 +39,7 @@ chmod -R 0777 framework/sessions/
 chmod -R 0777 framework/views/
 ````
 
-## create model database name 'Company'
+## create model database name `Company`
 
 ````
 php artisan make:model Company -m
@@ -194,16 +194,16 @@ class CompanyController extends Controller
 }
 ````
 
-## nano routes/web.php
+## routes
 
-add this
+### nano routes/web.php
 
 ````
 use App\Http\Controllers\CompanyController;
 Route::resource('companies', CompanyController::class);
 ````
 
-## create folder 'resources/views/companies' add index.blade.php
+## create folder `resources/views/companies` add file `index.blade.php`
 
 nano resources/views/companies/index.blade.php
 
