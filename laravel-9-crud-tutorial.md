@@ -39,13 +39,13 @@ chmod -R 0777 framework/sessions/
 chmod -R 0777 framework/views/
 ````
 
-## create database
+## create model database name 'Company'
 
 ````
 php artisan make:model Company -m
 ````
 
-## add db migrations
+## add db migrations add up() function
 
 nano database/migrations/2023_02_08_101101_create_companies_table.php
 
@@ -79,11 +79,15 @@ class Company extends Model
     protected $fillable = ['name', 'email', 'address'];
 }
 ````
+## after add model run 
 
+````
 php artisan migrate
+````
 
+## create controller command
 
-## php artisan make:controller CompanyController
+### php artisan make:controller CompanyController
 
 ````
 <?php
@@ -199,7 +203,9 @@ use App\Http\Controllers\CompanyController;
 Route::resource('companies', CompanyController::class);
 ````
 
-## nano resources/views/companies/index.blade.php
+## create folder 'resources/views/companies' add index.blade.php
+
+nano resources/views/companies/index.blade.php
 
 ````
 <!DOCTYPE html>
