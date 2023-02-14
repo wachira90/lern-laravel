@@ -24,6 +24,18 @@ Composer version 2.5.2 2023-02-04 14:33:22
 composer create-project --prefer-dist laravel/laravel example-app
 ````
 
+## permission folder 
+
+````
+chown -R adminpcd:nginx example-app/
+cd example-app/
+chmod -R 0775 storage/
+cd storage/
+chmod -R 0750 logs/
+chmod -R 0754 framework/views/
+chmod -R 0770 framework/sessions/
+````
+
 ## install global command
 ````
 composer global require laravel/installer
