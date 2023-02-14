@@ -30,13 +30,13 @@ CREATE DATABASE `pcd_test` CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
 ## permission
 
 ````
-chown -R adminpcd:root pcd_test/
+chown -R adminpcd:nginx pcd_test/
 cd pcd_test/
 chmod -R 0775 storage/
 cd storage/
-chmod -R 0777 logs/
-chmod -R 0777 framework/sessions/
-chmod -R 0777 framework/views/
+chmod -R 0750 logs/
+chmod -R 0754 framework/views/
+chmod -R 0770 framework/sessions/
 ````
 
 ## create model database name `Company`
