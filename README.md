@@ -47,6 +47,89 @@ CMD ["php","artisan","serve","--host=0.0.0.0", "--port=8000"]
 # php artisan serve --host=0.0.0.0 --port=8000
 ```
 
+## control script 
+
+```sh
+#!/bin/bash
+set -e
+LARAVEL_COMMAND="php artisan serve --host=0.0.0.0 --port=8000"
+PID_FILE="laravel_server.pid"
+
+start() {
+  if [ -f "$PID_FILE" ]; then
+    echo "Laravel server is already running (PID: $(cat "$PID_FILE"))."
+    exit 1
+  fi
+
+  echo "Starting Laravel server..."
+  $LARAVEL_COMMAND > laravel.log 2>&1 &
+  echo $! > "$PID_FILE"
+  echo "Laravel server started in background. PID: $(cat "$PID_FILE"). See laravel.log for details."
+}
+
+stop() {
+  if [ ! -f "$PID_FILE" ]; then
+    echo "Laravel server is not running."
+    exit 1
+  fi
+
+  PID=$(cat "$PID_FILE")
+  echo "Stopping Laravel server (PID: $PID)..."
+  kill $PID
+  if [ $? -eq 0 ]; then
+    rm "$PID_FILE"
+    echo "Laravel server stopped."
+  else
+    echo "Failed to stop Laravel server (PID: $PID)."
+  fi
+}
+
+status() {
+  if [ ! -f "$PID_FILE" ]; then
+    echo "Laravel server is not running."
+    exit 0
+  fi
+
+  PID=$(cat "$PID_FILE")
+  if ps -p "$PID" > /dev/null; then
+    echo "Laravel server is running (PID: $PID)."
+  else
+    echo "Laravel server is not running (PID file found, but process not active)."
+    rm "$PID_FILE"
+  fi
+}
+
+restart() {
+  echo "Restarting Laravel server..."
+  stop
+  # Wait a moment to ensure the server has stopped
+  sleep 2
+  start
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  status)
+    status
+    ;;
+  restart)
+    restart
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|status|restart}"
+    exit 1
+    ;;
+esac
+
+exit 0
+```
+
+
 ## install global command
 
 ```sh
