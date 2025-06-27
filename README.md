@@ -1,27 +1,27 @@
-# lerning laravel
+# Lerning Laravel
 
 Don't forgot add path env for php check by "php -v"
 
-## install composer 
+## Install Composer 
 
 ```
 https://getcomposer.org/Composer-Setup.exe
 ```
 
-## check version
+## Check Version
 
 ````
 C:\Users\admin>composer -V
 Composer version 2.5.2 2023-02-04 14:33:22
 ````
 
-## download code by composer
+## Create Project by composer
 
 ```sh
 composer create-project --prefer-dist laravel/laravel example-app
 ```
 
-## permission folder 
+## Permission Folder 
 
 ```sh
 chown -R adminpcd:nginx example-app/
@@ -47,7 +47,7 @@ CMD ["php","artisan","serve","--host=0.0.0.0", "--port=8000"]
 # php artisan serve --host=0.0.0.0 --port=8000
 ```
 
-## control script 
+## Control Script 
 
 ```sh
 #!/bin/bash
